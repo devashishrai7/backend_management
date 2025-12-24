@@ -1,0 +1,17 @@
+version: '3.13.2'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+  
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: backend_management
+    ports:
+      - "3306:3306"
