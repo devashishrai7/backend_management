@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 PROJECT NAME: backend_management
 
 A modular backend application with authentication, CRUD APIs, database integration, Docker support, and minimal error handling.
@@ -187,3 +188,7 @@ AUTHOR: -
 Devashish Rajbhar
 Backend Developer (Python / Laravel)
 devashish0797@gmail.com
+=======
+# backend_management
+Backend platform providing secure APIs, modular services, and scalable architecture.
+>>>>>>> a1c8f3fb9b00f2643637f1fb4eaf5371c9b00dc2
