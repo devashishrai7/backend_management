@@ -21,7 +21,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title = 'Backend Management', lifespan= lifespan)
 
-# app.add_middleware(ErrorHandlerMiddleware)
+app.add_middleware(ErrorHandlerMiddleware)
 
 app.include_router(auth_router)
 app.include_router(dashboard_router)
