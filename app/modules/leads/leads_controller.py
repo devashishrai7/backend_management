@@ -2,7 +2,8 @@ from sqlalchemy.orm import Session
 from app.modules.leads.leads_model import Lead
 from app.modules.leads.leads_schema import Leads
 
-def createLead(db: Session, data: Leads):
+def createLead(data: Leads, db: Session):
+    print(data)
     obj = Lead(
         name = data.name,
         email = data.email,

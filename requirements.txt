@@ -3,8 +3,9 @@ fastapi
 uvicorn
 sqlalchemy
 pymysql
+cryptography
 pydantic-settings
 python-jose
 bcrypt==3.2.2
 passlib[bcrypt]
-"pydantic[email]"
+pydantic[email]

@@ -1,104 +1,514 @@
 {
-  "info": {
-    "name": "backend_management API Collection",
-    "_postman_id": "backend-management",
-    "description": "Postman collection for backend_management project",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Auth - Signup",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "url": {
-          "raw": "{{base_url}}/auth/signup",
-          "host": ["{{base_url}}"],
-          "path": ["auth", "signup"]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"name\": \"Devashish\",\n  \"email\": \"devashish@example.com\",\n  \"password\": \"Password@123\"\n}"
-        }
-      }
-    },
-    {
-      "name": "Auth - Login",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "url": {
-          "raw": "{{base_url}}/auth/login",
-          "host": ["{{base_url}}"],
-          "path": ["auth", "login"]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"email\": \"devashish@example.com\",\n  \"password\": \"Password@123\"\n}"
-        }
-      }
-    },
-    {
-      "name": "Get Dashboard",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{base_url}}/dashboard",
-          "host": ["{{base_url}}"],
-          "path": ["dashboard"]
-        }
-      }
-    },
-    {
-      "name": "Create Lead",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "url": {
-          "raw": "{{base_url}}/leads",
-          "host": ["{{base_url}}"],
-          "path": ["leads"]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"name\": \"Test Lead\",\n  \"email\": \"lead@example.com\",\n  \"phone\": \"9999999999\"\n}"
-        }
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "base_url",
-      "value": "http://localhost:3000"
-    },
-    {
-      "key": "token",
-      "value": ""
-    }
-  ]
+	"info": {
+		"_postman_id": "c273331a-f202-4933-a7a0-1c8d800c64ed",
+		"name": "backend_management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50085370"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"string\",\r\n  \"email\": \"devashish@example.com\",\r\n  \"password\": \"Password@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"devashish@example.com\",\r\n  \"password\": \"Password@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Dashoard",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"field\": \"dashboard area\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/dashboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dashboard",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3MzU2MzV9.05xb7w7h5MZzxuMPSnJVe9rVBESbFoi1bDPAX646WKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3MzU2MzV9.05xb7w7h5MZzxuMPSnJVe9rVBESbFoi1bDPAX646WKY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:7000/dashboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Analytics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3MzU2MzV9.05xb7w7h5MZzxuMPSnJVe9rVBESbFoi1bDPAX646WKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"subject\": \"testing\",\r\n  \"description\": \"testing description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/analytics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"analytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Analytics",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3MzU2MzV9.05xb7w7h5MZzxuMPSnJVe9rVBESbFoi1bDPAX646WKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"subject\": \"testing\",\r\n  \"description\": \"testing description\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:7000/analytics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"analytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Leads",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"mukesh\",\r\n  \"email\": \"mukesh@gmail.com\",\r\n  \"phone_number\": 9794021196\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/leads/create-lead",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"leads",
+						"create-lead"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Leads",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3MzU2MzV9.05xb7w7h5MZzxuMPSnJVe9rVBESbFoi1bDPAX646WKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"mukesh\",\r\n  \"email\": \"mukesh@gmail.com\",\r\n  \"phone_number\": 9794021196\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:7000/leads/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"leads",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sales",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3Mzk2MzF9.SjkbNBjbIBbOQgYwG-rMy4VVjSM6NZMZPKIwVJhybec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lead_id\": 1,\r\n  \"sale_status\": \"sale\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/sales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Sales of Authenticated User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3Mzk2MzF9.SjkbNBjbIBbOQgYwG-rMy4VVjSM6NZMZPKIwVJhybec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lead_id\": 1,\r\n  \"sale_status\": \"sale\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:7000/sales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Contents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3Mzk2MzF9.SjkbNBjbIBbOQgYwG-rMy4VVjSM6NZMZPKIwVJhybec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"subject\": \"testing\",\r\n  \"description\": \"content testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/contents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"contents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Contents",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3Mzk2MzF9.SjkbNBjbIBbOQgYwG-rMy4VVjSM6NZMZPKIwVJhybec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lead_id\": 1,\r\n  \"sale_status\": \"sale\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/contents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"contents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Authenticated User's Settings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3Mzk2MzF9.SjkbNBjbIBbOQgYwG-rMy4VVjSM6NZMZPKIwVJhybec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lead_id\": 1,\r\n  \"sale_status\": \"sale\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:7000/settings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Authenticated User's Settings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZhc2hpc2hAZXhhbXBsZS5jb20iLCJleHAiOjE3NjY3Mzk2MzF9.SjkbNBjbIBbOQgYwG-rMy4VVjSM6NZMZPKIwVJhybec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"notification\": true,\r\n  \"offer_notification\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/settings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"settings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
