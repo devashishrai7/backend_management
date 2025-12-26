@@ -129,6 +129,8 @@ uvicorn app.main:app --reload
 
 DOCKER RUN:-
 
+!Before running below command update database credentials
+
 docker build -t backend_management .
 docker run -p 3000:3000 backend_management
 
